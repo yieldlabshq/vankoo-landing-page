@@ -1,0 +1,34 @@
+---
+import Nav from './layout/Nav.astro';
+import Footer from './layout/Footer.astro';
+import Hero from './sections/Hero.astro';
+import Pipeline from './sections/Pipeline.astro';
+import Calculator from './sections/Calculator.astro';
+import Audiences from './sections/Audiences.astro';
+import Risk from './sections/Risk.astro';
+import Faq from './sections/Faq.astro';
+import FinalCta from './sections/FinalCta.astro';
+
+/**
+ * The page itself, factored out of the routes.
+ *
+ * Astro's i18n gives a page its locale from the URL but does not conjure the
+ * routes, so `/` and `/en/` are two real files. Both render this, which is what
+ * keeps them from drifting: a section added here appears in both languages or
+ * fails the type check for a missing string.
+ */
+---
+
+<Nav />
+<main id="contenido">
+    <Hero />
+    <Pipeline />
+    {/* Straight after the five milestones, because «¿y cuánto me cuesta?» is the
+        question the milestones leave the reader holding. */}
+    <Calculator />
+    <Audiences />
+    <Risk />
+    <Faq />
+    <FinalCta />
+</main>
+<Footer />

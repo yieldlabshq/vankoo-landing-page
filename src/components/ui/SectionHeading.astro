@@ -1,0 +1,34 @@
+---
+/**
+ * The heading and lead every section opens with.
+ *
+ * Both styles are Figma's: `Landing/H2` in Poppins at -1%, `Landing/Lead` in
+ * Plus Jakarta Sans.
+ *
+ * There used to be an eyebrow above the heading, in every section, each with an
+ * identical green dot in front of it. Six of them on one page is the most
+ * mechanical tell there is that a layout was assembled rather than composed, and
+ * none of them told a reader anything the heading underneath did not: a section
+ * is already categorised by where it sits on the page. The heading carries its
+ * own weight.
+ */
+interface Props {
+    title: string;
+    lead?: string;
+    align?: 'start' | 'center';
+    class?: string;
+}
+
+const {title, lead, align = 'start', class: className = ''} = Astro.props;
+---
+
+<div
+    class:list={[
+        'flex flex-col gap-4',
+        align === 'center' ? 'items-center text-center' : 'items-start',
+        className
+    ]}
+>
+    <h2 class="type-section max-w-[20ch] text-fg">{title}</h2>
+    {lead && <p class:list={['type-lead max-w-[58ch]', align === 'center' && 'mx-auto']}>{lead}</p>}
+</div>
